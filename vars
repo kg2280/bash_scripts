@@ -1,0 +1,9 @@
+cat <<EOF> ~/vars
+HOSTNAME=testcentos7puppet
+IP1=199.182.134.101
+NETMASK1=255.255.255.0
+GATEWAY=199.182.134.1
+DOMAIN=modulis.ca
+EOF
+. ./vars
+
