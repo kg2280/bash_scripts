@@ -1,9 +1,12 @@
 cat <<EOT> ~/prep.sh
 #!/bin/bash
 
-. ./vars
-
-export PACKAGE_TO_INSTALL="nano ca-certificates curl wget man ntp ruby"
+HOSTNAME=testcentos7puppet
+IP1=199.182.134.101
+NETMASK1=255.255.255.0
+GATEWAY=199.182.134.1
+DOMAIN=modulis.ca
+PACKAGE_TO_INSTALL="nano ca-certificates curl wget man ntp ruby"
 
 if [ ! -e p1.done ]
 then
@@ -74,12 +77,8 @@ EOF
     server = puppet.modulis.ca
 EOF
 
-## Starting the service
-puppet resource service <NAME> ensure=running enable=true
-## Or do a cron job
-puppet resource cron puppet-agent ensure=present user=root minute=30 command='/usr/bin/puppet agent --onetime --no-daemonize --splay'
-  systemctl enable puppet
-  systemctl start puppet
+  puppet agent -t
+  puppet resource cron puppet-agent ensure=present user=root minute=30 command='/usr/bin/puppet agent --onetime --no-daemonize --splay'
 
   touch p1.done
   reboot
