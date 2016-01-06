@@ -82,6 +82,7 @@ EOF
   puppet agent -t
   puppet resource cron puppet-agent ensure=present user=root minute=30 command='/usr/bin/puppet agent --onetime --no-daemonize --splay'
 
+  sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
   touch p1.done
   reboot
 
