@@ -7,6 +7,7 @@ NETMASK1=255.255.255.0
 GATEWAY=199.182.134.1
 DOMAIN=modulis.ca
 PACKAGE_TO_INSTALL="nano ca-certificates curl wget man ntp ruby"
+PACKAGE_TO_UNINSTALL="NetworkManager"
 
 if [ ! -e p1.done ]
 then
@@ -61,6 +62,7 @@ EOF
 
   yum update -y
   yum install \$PACKAGE_TO_INSTALL -y
+  yum remove \$PACKAGE_TO_UNINSTALL -y
   ntpdate 0.ca.pool.ntp.org
   gem install -v 3.8.4 puppet
   mkdir /etc/puppet/
