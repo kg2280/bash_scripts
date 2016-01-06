@@ -54,7 +54,7 @@ EOF
   cat << EOF > /etc/yum.repos.d/modulis.repo
 [modulisrepo]
 name=ModulisCentOS Repo
-baseurl=http://rpm.modulis.ca/CentOS/\$releasever/\$basearch/
+baseurl=http://rpm.modulis.ca/CentOS/\\\$releasever/\\\$basearch/
 gpgcheck=0
 priority=1
 EOF
