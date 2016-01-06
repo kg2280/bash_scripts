@@ -1,4 +1,4 @@
-cat <<EOT> ~/prep.sh
+cat <<EOT> ./prep.sh
 #!/bin/bash
 
 HOSTNAME=testcentos7puppet
@@ -14,8 +14,8 @@ then
   cat << EOF > /etc/sysconfig/network
 NETWORKING=yes
 NETWORKING_IPV6=no
-HOSTNAME=$HOSTNAME.$DOMAIN
-GATEWAY=$GATEWAY
+HOSTNAME=\$HOSTNAME.\$DOMAIN
+GATEWAY=\$GATEWAY
 EOF
 
   #### /etc/sysconfig/network-scripts/ifcfg-int ####
@@ -26,14 +26,14 @@ IPV6INIT=yes
 NAME=`ifconfig | grep flags | grep -v lo | cut -f1 -d":"`
 DEVICE=`ifconfig | grep flags | grep -v lo | cut -f1 -d":"`
 ONBOOT=yes
-IPADDR=$IP1
-NETMASK=$NETMASK1
+IPADDR=\$IP1
+NETMASK=\$NETMASK1
 EOF
 
   #### /etc/hosts ####
   cat << EOF > /etc/hosts
 127.0.0.1 localhost
-$IP1	$HOSTNAME.$DOMAIN $HOSTNAME
+\$IP1    \$HOSTNAME.\$DOMAIN \$HOSTNAME
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback
@@ -44,8 +44,8 @@ EOF
 
   #### resolv.conf ####
   cat << EOF > /etc/resolv.conf
-search $DOMAIN
-domain $DOMAIN
+search \$DOMAIN
+domain \$DOMAIN
 nameserver 8.8.8.8
 nameserver 4.2.2.2
 EOF
@@ -60,7 +60,7 @@ priority=1
 EOF
 
   yum update -y
-  yum install $PACKAGE_TO_INSTALL -y
+  yum install \$PACKAGE_TO_INSTALL -y
   ntpdate 0.ca.pool.ntp.org
   gem install -v 3.8.4 puppet
   mkdir /etc/puppet/
@@ -70,8 +70,8 @@ EOF
     vardir = /var/lib/puppet
     logdir = /var/log/puppet
     rundir = /var/run/puppet
-    ssldir = $vardir/ssl
-    factpath=$vardir/lib/facter
+    ssldir = \\\$vardir/ssl
+    factpath = \\\$vardir/lib/facter
 
 [agent]
     server = puppet.modulis.ca
