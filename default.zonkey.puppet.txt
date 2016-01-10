@@ -1,0 +1,57 @@
+IPTABLES NOT SUPPORTED YET, MUST ADD FIREWALL RULES MANUALLY FOR NOW
+IPTABLES NOT SUPPORTED YET, MUST ADD FIREWALL RULES MANUALLY FOR NOW
+IPTABLES NOT SUPPORTED YET, MUST ADD FIREWALL RULES MANUALLY FOR NOW
+IPTABLES NOT SUPPORTED YET, MUST ADD FIREWALL RULES MANUALLY FOR NOW
+
+DEFAULT VALUE (to change per host)
+GUI
+base_domain =			test.modulis.ca
+gui_root_user =			root
+gui_root_pass =			eFcvNuyjAkCfSr
+db_host =			199.182.132.189
+db_name =			zonkey
+db_user =			zonkey
+db_pass =			LCC3Bw7BfFBpVSy
+
+DB
+from_network =			10.130.8.%
+db_ip =				["10.130.12.35","10.130.12.36"]
+db_name =			zonkey
+db_user_user =			zonkey
+db_user_pass =			YLbzvViwH5x8Esq
+db_replication =		false
+db_replication_pass =		YBd3dRDmDN2M4LZ
+db_root_pass =			gQbFu27VAb3yi4B
+db_server_id =			1
+
+OPENSIPS
+opensips_base_domain =		test.modulis.ca
+opensips_db_host =		10.130.12.35
+opensips_db_name =		zonkey
+opensips_db_user =		zonkey
+opensips_db_pass =		YLbzvViwH5x8Esq
+opensips_ip =			10.130.8.21
+opensips_listen_interface =	ens160
+opensips_mgm_ip =		10.130.8.100
+opensips_port =			5060
+opensips_skinny_ip =		10.130.12.66
+
+ASTERISK
+ast_db_host =			10.130.12.35
+ast_db_name =			zonkey
+ast_db_user =			zonkey
+ast_db_pass =			YLbzvViwH5x8Esq
+ast_default_lang =		fr
+ast_directmedia =		false
+ast_mgm01_ip =			10.130.8.100
+ast_notification_email =	voipadmin@modulis.ca
+ast_opensips_ip =		10.130.8.21
+
+ASTERISK-SCCP
+ast_db_host =			10.130.12.35
+ast_db_name =			zonkey
+ast_db_user =			zonkey
+ast_db_pass =			YLbzvViwH5x8Esq
+ast_realm =			campus.voip.etsmtl.ca
+
+
