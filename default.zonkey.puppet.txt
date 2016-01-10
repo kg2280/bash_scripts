@@ -16,12 +16,12 @@ db_pass =			LCC3Bw7BfFBpVSy
 DB
 from_network =			10.130.8.%
 db_ip =				["10.130.12.35","10.130.12.36"]
+db_root_pass =			gQbFu27VAb3yi4B
 db_name =			zonkey
 db_user_user =			zonkey
 db_user_pass =			YLbzvViwH5x8Esq
 db_replication =		false
 db_replication_pass =		YBd3dRDmDN2M4LZ
-db_root_pass =			gQbFu27VAb3yi4B
 db_server_id =			1
 
 OPENSIPS
@@ -52,6 +52,7 @@ ast_db_host =			10.130.12.35
 ast_db_name =			zonkey
 ast_db_user =			zonkey
 ast_db_pass =			YLbzvViwH5x8Esq
+$ast_db_root_pass =		gQbFu27VAb3yi4B
 ast_realm =			campus.voip.etsmtl.ca
 
 
