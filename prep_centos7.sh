@@ -9,6 +9,7 @@ DOMAIN=modulis.ca
 PACKAGE_TO_INSTALL="nano ca-certificates curl wget man ntp ruby"
 PACKAGE_TO_UNINSTALL="NetworkManager"
 
+
 if [ ! -e p1.done ]
 then
   #### /etc/sysconfig/network ####
@@ -83,10 +84,11 @@ EOF
   puppet resource cron puppet-agent ensure=present user=root minute=30 command='/usr/bin/puppet agent --onetime --no-daemonize --splay'
 
   sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
+  firewall-cmd --permanent --zone=public --add-port=10202/tcp
+  semanage port -a -t ssh_port_t -p tcp 10202
   touch p1.done
   reboot
 
 fi
 EOT
-sh ./prep.sh
 
